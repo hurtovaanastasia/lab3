@@ -9,14 +9,24 @@ public class Main {
         int[] array = new int[size];
         Random random = new Random();
         for (int i = 0; i < size; i++) {
-            int check = random.nextInt(100);
-            if(check % 2 == 0) {
-                array[i] = check;
-            }
+            array[i] = random.nextInt(100);
         }
         System.out.println("Array before sorting: " + Arrays.toString(array));
-        insertionSort(array);
-        System.out.println("Array after sorting even elements: " + Arrays.toString(array));
+        int count = 0;
+        for (int i : array) {
+            if (i % 2 == 0) {
+                count++;
+            }
+        }
+        int[] sortir = new int[count];
+        int index = 0;
+        for (int num : array) {
+            if (num % 2 == 0) {
+                sortir[index++] = num;
+            }
+        }
+        insertionSort(sortir);
+        System.out.println("Array after sorting: " + Arrays.toString(sortir));
     }
 
     public static void insertionSort(int[] sortArr) {
@@ -26,10 +36,10 @@ public class Main {
             for (j = i; j > 0 && temp < sortArr[j - 1]; j--) {
                 sortArr[j] = sortArr[j - 1];
             }
-                sortArr[j] = temp;
-            }
+            sortArr[j] = temp;
         }
     }
+}
 
 
 
